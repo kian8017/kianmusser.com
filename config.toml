@@ -1,0 +1,11 @@
+baseURL = 'http://www.kianmusser.com/'
+languageCode = 'en-us'
+title = "Kian Musser"
+theme= 'curTheme'
+
+[params]
+  dateFormat = "January 2, 2006"
+
+[markup]
+  [markup.highlight]
+    style = "solarized-light"

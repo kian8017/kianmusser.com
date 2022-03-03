@@ -1,0 +1,12 @@
+{
+    "frontMatter.preview.host": "http://localhost:1313/article",
+    "frontMatter.framework.startCommand": "hugo server -D",
+    "[markdown]": {
+    },
+    "frontMatter.content.pageFolders": [
+        {
+            "title": "articles",
+            "path": "[[workspace]]/content/articles"
+        }
+    ]
+}

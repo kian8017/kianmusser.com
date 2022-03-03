@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{- partial "head.html" . -}}
+  <body class="flex flex-col w-full h-screen">
+    {{- partial "header.html" . -}}
+    <div class="flex flex-col flex-grow bg-slate-200">
+      <main class="mx-4 md:self-center md:w-full md:max-w-2xl">
+        {{- block "main" . }} {{- end }}
+      </main>
+    </div>
+    {{- partial "footer.html" . -}}
+  </body>
+</html>

@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fix for code blocks overflowing */
+.highlight > pre {
+  overflow: auto;
+}
+
+@layer base {
+  /* Inline code blocks */
+  :not(pre) > code {
+    @apply bg-slate-300 rounded-md;
+  }
+
+  /* Inline code blocks in a link */
+  a > code {
+    @apply hover:bg-sky-400 active:bg-sky-300;
+  }
+
+  /* Default element styles */
+
+  a {
+    @apply underline decoration-2 underline-offset-4 hover:bg-sky-400 active:bg-sky-300;
+  }
+
+  p {
+    @apply py-2;
+  }
+
+  h1 {
+    @apply py-2 text-2xl font-bold;
+  }
+
+  h2 {
+    @apply py-2 text-xl font-bold;
+  }
+
+  h3 {
+    @apply py-2 font-bold;
+  }
+
+  hr {
+    @apply h-1 bg-sky-500 mb-2;
+  }
+
+  blockquote {
+    @apply my-2 p-2 bg-sky-300 rounded-lg shadow-lg;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+
+  ol {
+    @apply list-decimal list-inside;
+  }
+}
