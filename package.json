@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "css": "npx tailwindcss -i ./themes/curTheme/assets/css/input.css -o ./themes/curTheme/assets/css/output.css --watch",
+    "css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
