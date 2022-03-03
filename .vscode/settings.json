@@ -1,5 +1,5 @@
 {
-    "frontMatter.preview.host": "http://localhost:1313/article",
+    "frontMatter.preview.host": "http://localhost:1313/articles",
     "frontMatter.framework.startCommand": "hugo server -D",
     "[markdown]": {
     },
@@ -8,5 +8,6 @@
             "title": "articles",
             "path": "[[workspace]]/content/articles"
         }
-    ]
+    ],
+    "frontMatter.content.autoUpdateDate": true
 }

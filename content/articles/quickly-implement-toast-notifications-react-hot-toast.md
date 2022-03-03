@@ -1,8 +1,9 @@
 ---
-title: "Need to quickly implement toast notifications in React? Try react-hot-toast"
+title: Need to quickly implement toast notifications in React? Try react-hot-toast
 date: 2022-02-28
-description: "How to quickly and simply implement toast notifications in a React app"
+description: How to quickly and simply implement toast notifications in a React app
 draft: false
+lastmod: 2022-03-03T16:34:59.283Z
 ---
 
 > Disclaimer: I have used `react-hot-toast` in one of my projects, but I have no affiliation with this library or its author.
@@ -72,7 +73,7 @@ It really is as simple as that. Your app now has toast notifications!
 
 ## Extras
 
-Well, that was quick! We only scratched the surface up there, so let's dig a bit deeper and learn a couple ways to customize the toast notifications.
+Well, that was quick! We only scratched the surface, so let's dig deeper and learn a couple ways to customize the toast notifications.
 
 ### Customizing toasts
 
@@ -94,7 +95,7 @@ const testPromise = fetch("https://URL_HERE");
 toast.promise(testPromise, {
   loading: "Fetching...",
   success: "Fetched!",
-  error: "Failed to fetch",
+  error: "Failed to fetch.",
 }); // Shows a loading animation
 ```
 
@@ -110,7 +111,9 @@ toast.dismiss(toastID); // Dismiss loading toast
 
 > There's many more ways to customize `<Toaster>`. For more information, check out [the docs](https://react-hot-toast.com/docs/toaster).
 
-You can change the position of the `<Toaster>` with the `position` prop. Valid options are `top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, and `bottom-right`.
+You can change the position of the `<Toaster>` with the `position` prop.
+
+Valid options are `top-left`, `top-center`, `top-right`, `bottom-left`, `bottom-center`, and `bottom-right`.
 
 ```jsx
 <Toaster position="bottom-center" />
