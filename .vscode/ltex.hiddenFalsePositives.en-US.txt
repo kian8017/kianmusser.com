@@ -1,5 +1,4 @@
 {"rule":"EN_A_VS_AN","sentence":"^\\QThe website would send a \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q type message with the query in data, and receive back a \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q message (since I needed the number of names the server was searching through), a \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q message, and an \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q (fallback similar results) message.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QIf you don't, check out the extras section at the end for instructions.\\E$"}
 {"rule":"PASSIVE_VOICE","sentence":"^\\QThese additional prerequisites might be needed if you don't already have things set up.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIf you're running Windows, check out this tutorial on how to install Redis on Windows 10.\\E$"}
-{"rule":"WHAT_TO_VBD","sentence":"^\\QI currently specialize in writing tutorials and \"how to's\" for beginner developers.\\E$"}
-{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QIf you don't, check out the extras section at the end for instructions.\\E$"}

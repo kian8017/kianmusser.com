@@ -3,12 +3,14 @@ title: How to use Redis in NodeJS with ioredis
 description: Quickly get started using Redis and NodeJS together
 date: 2022-03-04T19:17:12.481Z
 draft: false
-lastmod: 2022-03-04T20:28:40.588Z
+lastmod: 2022-03-04T20:59:04.501Z
 ---
 
-Heard about [Redis](https://redis.io/)? The blazingly fast in-memory key-value datastore / cache? Want to use it with your experience in NodeJS? This tutorial will help you get up and running with Redis and NodeJS quickly using `ioredis`.
+[Redis](https://redis.io/) is a blazingly fast in-memory NoSQL database. It works great for session storage, caching, and real-time applications that need incredibly fast response times.
 
-In this tutorial you'll quickly get up and running connecting your NodeJS project to Redis. You'll also learn some basic Redis commands, but we won't get into too much detail.
+This tutorial will help you get up and running with Redis and NodeJS quickly using `ioredis`.
+
+In this tutorial you'll quickly get up and running connecting your NodeJS project to Redis. You'll also learn some basic Redis commands.
 
 ## Preparation
 
@@ -107,7 +109,7 @@ const result = await client.del("testkey");
 // 1 if `testkey` exists, or 0 if it doesn't
 ```
 
-> For more information about common Redis commands, check out [Common Redis commands on freeCodeCamp](https://www.freecodecamp.org/news/how-to-learn-redis/#common-redis-commands).
+> This tutorial only covers the basics of Redis. For more information, check out [Common Redis commands on freeCodeCamp](https://www.freecodecamp.org/news/how-to-learn-redis/#common-redis-commands).
 
 ## Extras
 
