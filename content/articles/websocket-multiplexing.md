@@ -3,9 +3,10 @@ title: Custom WebSocket Multiplexing with ReactJS
 date: 2022-02-22
 description: My learning process implementing multiplexing on WebSockets
 draft: false
+lastmod: 2022-03-04T20:16:52.980Z
 ---
 
-> Disclaimer: The following explanation and code is how I decided to do things on this project, and may not be right for you.
+> Disclaimer: The following explanation and code is how I decided to do things on this project, and may not be right for you. Also, this article is more of a story, so it may be less formal than other tutorials.
 
 ## Background
 
@@ -98,7 +99,7 @@ const WelcomeMessage = (props) => {
 
 It's not too bad, but it's still a lot of repetitive code (especially that `useEffect` hook that every Component that uses the WebSocket connection needs). But for the moment, it worked, and so I used it.
 
-Until it stopped working.
+Until it stopped working...
 
 ## Need for Proper Multiplexing
 
