@@ -8,4 +8,4 @@ theme= 'curTheme'
 
 [markup]
   [markup.highlight]
-    style = "solarized-light"
+    style = "monokailight"
