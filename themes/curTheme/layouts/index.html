@@ -2,18 +2,17 @@
 <div class="flex flex-col items-center m-4 sm:flex-row">
   <img class="rounded-full h-24 w-24" src="/bio.jpg" alt="me" />
   <div class="px-2 text-center sm:text-left">
-    <h1>Hi! I'm Kian Musser!</h1>
-    <p>
+    <h1 class="py-0">Hi! I'm Kian Musser!</h1>
+    <p class="py-0">
       And I'm a freelance technical writer specializing in writing about
-      <a href="https://reactjs.org">ReactJS</a>.
+      technology from a developer's perspective.
     </p>
   </div>
 </div>
 <div>
   <h2>Articles</h2>
-  {{ range where .Site.RegularPages "Section" "articles" }}
-    {{ partial "articleLink.html" . }}
-  {{end}}
+  {{ range where .Site.RegularPages "Section" "articles" }} {{ partial
+  "articleLink.html" . }} {{end}}
 </div>
 <hr />
 
