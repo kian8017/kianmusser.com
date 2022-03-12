@@ -1,14 +1,14 @@
 ---
 title: "React: Where should I put my Websocket?"
-description: The pro's and con's of different methods of implementing Websockets in React
+description: The pro's and con's of different places to implement Websockets in React
 date: 2022-03-11T20:29:17-06:00
-draft: true
-lastmod: 2022-03-12T03:18:28.893Z
+draft: false
+lastmod: 2022-03-12T16:08:08.353Z
 ---
 
 ## Introduction
 
-Have you been wondering where to put that `const ws = new WebSocket(...)`? Not sure whether to use a Context, a Hook, or just put it in a component? Well look no further!
+Have you been wondering where to put that `const ws = new WebSocket(...)`? Not sure whether to use Context, a Hook, or just put it in a component? Well look no further!
 
 In this article, you'll learn the different places you can put Websockets, and the advantages and disadvantages of each.
 
@@ -20,7 +20,7 @@ For an introduction to Websockets and how to implement them in React, see [this 
 
 ## Can I put my Websocket...
 
-Now we'll compare the different places you can put a Websocket in your React app.
+Now we'll compare the different places you can put a Websocket in a React app, starting with components.
 
 ## In a component?
 
@@ -40,14 +40,14 @@ export class WsClass extends Component {
     super(props);
 
     this.state = {
-      val: "initial",
+      val: null,
     };
   }
 
   componentDidMount() {
     this.ws.onopen = () => {
       console.log("opened");
-      this.ws.send("test");
+      this.ws.send("test"); // message to send on Websocket ready
     };
 
     this.ws.onclose = () => {
@@ -73,15 +73,17 @@ export class WsClass extends Component {
 
 You create the Websocket as an instance variable of the class, then assign the `onopen`, `onclose`, and `onmessage` (and `onerror` if you need) events in the `componentDidMount` lifecycle function. You use `setState` to keep track of what the Websocket returns, and close the Websocket in `componentWillUnmount`.
 
-Before we dive into the pro's and con's of putting the Websocket in a component, let's take a quick look at functional components.
+Simple enough, right?
+
+Before we dive into the pro's and con's of putting Websockets in components, let's take a quick look at functional components.
 
 ### Functional Components
 
-Functional components can't use state like class components can, so we'll need to use hooks to implement the same functionality.
+Functional components can't use instance variables like class components can, so we'll need to use hooks to implement the same functionality.
 
-```jsx {hl_lines=[3,6,"8-20",22,25]}
+```jsx {hl_lines=[3,6,"8-19",21,24]}
 export const WsFunc = () => {
-  const [val, setVal] = useState("initial");
+  const [val, setVal] = useState(null);
   const ws = useRef(null);
 
   useEffect(() => {
@@ -89,7 +91,6 @@ export const WsFunc = () => {
 
     socket.onopen = () => {
       console.log("opened");
-      socket.send("test");
     };
 
     socket.onclose = () => {
@@ -122,7 +123,7 @@ We use the `useState` hook to keep track of what the Websocket returns, and `use
 >
 > We don't need to rerender the component when the Websocket connection is created, only when we receive a new message (and that's where we use `useState`).
 
-And now, what are the pro's and con's of placing the Websocket in a component?
+Now let's review the pro's and con's.
 
 **Pro's:**
 
@@ -131,7 +132,7 @@ And now, what are the pro's and con's of placing the Websocket in a component?
 
 **Con's:**
 
-- It's not easily accessible to other components (except children if you pass it down in props). This is fine if only one part of your app needs a Websocket, but when multiple parts need to access the same Websocket, it starts to become unwieldy.
+- It's not easily accessible to other components (except children if you pass it down through props). This is fine if only one part of the app needs a Websocket, but when that increases to multiple parts, it starts becoming unwieldy.
 
 Now we've gone over the advantages and disadvantages of putting the Websocket in a component, but what about in a hook?
 
@@ -189,20 +190,20 @@ export const WsHook = () => {
 
 It works, and it's easy to understand and reuse! However, it's not for everyone.
 
-Putting the Websocket in a hook works best when there are multiple parts of your app that each need to connect to different servers. For multiple parts that all need to connect to the same server, using hooks might not be a good fit.
+Putting the Websocket in a hook works best when there are multiple parts of the app that each need to connect to different servers. For multiple parts that all need to connect to the same server, using hooks might not be a good fit.
 
 Let's review the pro's and con's.
 
 **Pro's:**
 
-- Works well for multiple Websocket connections to different URLs. It abstracts away all the connection logic, making it easy to connect to different servers with the same hook.
-- Is easy to use with components. All you need are the `useWs` and `useEffect` hooks in each part of your app.
+- Works well for multiple Websocket connections to different servers. It abstracts away all the connection logic, making it easy to connect to different servers with the same hook.
+- Is easy to use with components. All you need are the `useWs` and `useEffect` hooks in each part of the app.
 
 **Con's:**
 
-- Not a good fit for a single connection. If multiple parts of your app need to access the same Websocket, this hook won't work. It creates a new connection each time you use `useWs`, which could end up creating multiple connections to the same server.
+- Not a good fit for a single connection. If multiple parts of the app need to access the same Websocket, this hook won't work. It creates a new connection each time you use `useWs`, which could end up creating multiple connections to the same server.
 
-But what if multiple parts of your app need to connect to the same server? Is using a parent component and passing down the connection through props our best bet?
+But what if multiple parts of the app need to connect to the same server? Is using a parent component and passing down the connection through props our best bet?
 
 Not quite. React has something built in for this very use case: Context.
 
@@ -213,8 +214,8 @@ Can you put a Websocket in a context? Yes you can!
 The code to do so is very similar to the hook above.
 
 ```jsx {hl_lines=[10,13,"15-17",19,22]}
-//                                            ready, value, send
 export const WebsocketContext = createContext(false, null, () => {});
+//                                            ready, value, send
 
 // Make sure to put WebsocketProvider higher up in
 // the component tree than any consumers.
@@ -278,11 +279,17 @@ Let's review the pro's and con's.
 
 **Con's:**
 
-- All parts receive all messages. You may need to implement some sort of multiplexing to ensure that only certain parts of the application receive certain messages.
+- All parts receive all messages. You may need to implement some sort of multiplexing to ensure that only certain parts of the app receive certain messages.
 - It isn't easy to connect to multiple servers. You'd need to duplicate the code or create a function that creates multiple contexts.
 
-For most use cases, Contexts are the way to go.
+For most use cases (single Websocket connection and multiple parts that need it), Contexts are what you should use.
 
 ## Conclusion
+
+Let's quickly review the different places you can put a Websocket:
+
+- **Components:** best for simple projects
+- **Hooks:** best for multiple connections to different servers
+- **Contexts:** best for managing a single connection.
 
 There are many places where you can put your Websocket and each has its own pro's and con's. Now you know what works best for you!
