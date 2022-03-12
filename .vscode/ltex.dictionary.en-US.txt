@@ -6,3 +6,8 @@ frontmatter
 blazingly
 datastore
 npm
+Websockets
+Websocket
+Javascript
+rerenders
+rerender

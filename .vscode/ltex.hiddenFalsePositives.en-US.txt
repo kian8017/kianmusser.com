@@ -2,3 +2,5 @@
 {"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QIf you don't, check out the extras section at the end for instructions.\\E$"}
 {"rule":"PASSIVE_VOICE","sentence":"^\\QThese additional prerequisites might be needed if you don't already have things set up.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIf you're running Windows, check out this tutorial on how to install Redis on Windows 10.\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QWe don't need to rerender the component when the Websocket connection is created, only when we receive a new message (and that's where we use \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q).\\E$"}
+{"rule":"PASSIVE_VOICE","sentence":"^\\QThis tutorial was written for those who know how to use React (including React hooks and context), and know how to use Websockets in Javascript.\\E$"}
